@@ -14,8 +14,8 @@ const log = async (action = 'no - action', data = '') => {
         smallLogs = [];
     }
     let id = localStorage.getItem('user-id');
-    let url = document.url;
-    if (!url) {
+    let url = window.origin;
+    if (url.includes('127') || url.includes('http://localhost/')) {
         console.count('log ')
         console.log('action ', action, '\ndata ', data)
         return;
