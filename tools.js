@@ -16,7 +16,7 @@ export const prettyTime = () => {
 
 
 
-export const typeText = async(element, text, newElementType = 'span', classList = [], speed = 100, removeMarker = true) => {
+export const typeText = async(element, text, newElementType = 'span', classList = [], speed = 70, removeMarker = true) => {
     let span = document.createElement('span');
     let blinkMarker = document.createElement("span");
     let newElement = document.createElement(newElementType);
