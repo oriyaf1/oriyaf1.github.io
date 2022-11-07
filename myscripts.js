@@ -6,7 +6,7 @@ var smallLogs = [];
 const log = async (action = 'no - action', data = '') => {
     if (!localStorage.getItem('user-id')) {
         localStorage.setItem('user-id', randomId());
-        await sleep(20);
+        await sleep(200);
         log(action = 'new user', data = 'no id inside localStorage')
     }
     if (!data) {
@@ -345,9 +345,9 @@ const typeHeroText = async () => {
     }
 }
 
-const main = () => {
+const main = async() => {
 
-    log('main loaded', window.innerHeight.toString() + window.innerWidth.toString());
+    await log('main loaded', ' Height: ' +window.innerHeight.toString() + ' Width: ' + window.innerWidth.toString());
     typeHeroText();
     // TODO: hide login animathion
     initZoomControl();
