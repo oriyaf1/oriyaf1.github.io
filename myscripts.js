@@ -15,16 +15,17 @@ const log = async (action = 'no - action', data = '') => {
     }
     let id = localStorage.getItem('user-id');
     let url = window.origin;
+    let now = new Date();
+    let date = now.getFullYear().toString() + '/'
+    + (now.getMonth() + 1).toString() + '/'
+    + now.getDate().toString();
+    let time = now.getHours().toString() + ':' + now.getMinutes().toString();
     if (url.includes('127') || url.includes('http://localhost/')) {
         console.count('log ')
         console.log('action ', action, '\ndata ', data)
+        console.log(date, time)
         return;
     }
-    let now = new Date();
-    let date = now.getFullYear().toString() + '-'
-        + (now.getMonth() + 1).toString() + '-'
-        + now.getDate().toString();
-    let time = now.getHours().toString() + ':' + now.getMinutes().toString();
     const hook = "https://hooks.zapier.com/hooks/catch/13714525/bxr4tmv/?"
     return fetch(hook
         + 'id=' + id
@@ -279,7 +280,8 @@ const initZoomControl = () => {
         document.getElementById('nav-contact').click();
 
     });
-    document.getElementById('send-message-from-contact-button').addEventListener('click', () => {
+    document.getElementById('send-message-from-contact-button').addEventListener('click', (event) => {
+        event.preventDefault();
         let text = document.getElementById('textarea-from-contact').value;
         text = text.replace(/[^a-zA-Z!@., ]/g, "")
         if (!text)
