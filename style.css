@@ -181,7 +181,7 @@ background-image:  repeating-linear-gradient(to right, #ffffff, #ffffff 1px, #ff
     gap: 0.5rem;
     position: relative;
 }
-#clode-ide-button{
+#close-ide-button{
     position: absolute;
     top: 2px;
     right: 2px;
