@@ -121,7 +121,7 @@ const openIde = async () => {
     //     'screen_name': 'Home'
     // });
     log('open-ide')
-
+    await(1000)
     zoomControl.isIdeOpen == true ? await typeText(div, "Hi! glad you're here!", 'div', ['code']) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "I am Oriya First", 'div', ['code']) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "Software-Developer, currently working in my own independent business", 'div', ['code'], 30) : null;
@@ -129,8 +129,10 @@ const openIde = async () => {
     zoomControl.isIdeOpen == true ? await typeText(div, "I studied for a computer science degree during high school,", 'div', ['code'], 40) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "in recent years develop for a living.", 'div', ['code'], 40) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "I would love to meet or talk about your dreams! [also introduce myself, see if we can collaborate :) ]", 'div', ['code']) : null;
+    zoomControl.isIdeOpen == true ? await typeText(div, "Thank you, and have a wonderful day!", 'div', ['code'], 100, false) : null;
     if (zoomControl.isIdeOpen) {
         log('finish ide text')
+        await sleep(2000)
         let b = document.createElement('button')
         b.classList.add('send-note-button');
         b.classList.add('after-text-contact-button');
@@ -142,7 +144,6 @@ const openIde = async () => {
         div.appendChild(b)
 
     }
-    zoomControl.isIdeOpen == true ? await typeText(div, "Thank you, and have a wonderful day!", 'div', ['code'], 100, false) : null;
 
 
 }
