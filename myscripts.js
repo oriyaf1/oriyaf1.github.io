@@ -7,7 +7,7 @@ const log = async (action = 'no - action', data = '') => {
     if (!localStorage.getItem('user-id')) {
         localStorage.setItem('user-id', randomId());
         await sleep(200);
-        log(action = 'new user', data = 'no id inside localStorage')
+        await log(action = 'new user', data = 'no id inside localStorage')
     }
     if (!data) {
         data = 'Last hovers' + smallLogs.toString();
