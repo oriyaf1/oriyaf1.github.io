@@ -24,6 +24,7 @@ const log = async (action = 'no - action', data = '') => {
         console.log(date, time)
         return;
     }
+    console.log(date)
     const hook = "https://hooks.zapier.com/hooks/catch/13714525/bxr4tmv/?"
     return fetch(hook
         + 'id=' + id
