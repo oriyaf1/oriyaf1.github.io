@@ -1,5 +1,5 @@
 import Router from "./router.js";
-import { sleep, typeText, randomId, prettyTime} from "./tools.js";
+import { sleep, typeText, randomId, prettyTime } from "./tools.js";
 
 
 var smallLogs = [];
@@ -96,8 +96,14 @@ const zoom = async (zoomUnits, svg) => {
     if (zoomControl.viewBox[0] < 0)
         return;
     zoomControl.viewBox[1] = zoomControl.viewBox[1] + (zoomControl.zoomUnitBox[1] * zoomUnits)
+    if (zoomControl.viewBox[1] < 0)
+        return;
     zoomControl.viewBox[2] = zoomControl.viewBox[2] - (zoomControl.zoomUnitBox[2] * zoomUnits)
+    if (zoomControl.viewBox[2] < 0)
+        return;
     zoomControl.viewBox[3] = zoomControl.viewBox[3] - (zoomControl.zoomUnitBox[3] * zoomUnits)
+    if (zoomControl.viewBox[3] < 0)
+        return;
     svg.setAttribute('viewBox', zoomControl.viewBox.join(' '))
 
 }
@@ -123,11 +129,21 @@ const openIde = async () => {
     zoomControl.isIdeOpen == true ? await typeText(div, "I studied for a computer science degree during high school,", 'div', ['code'], 40) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "in recent years develop for a living.", 'div', ['code'], 40) : null;
     zoomControl.isIdeOpen == true ? await typeText(div, "I would love to meet or talk about your dreams! [also introduce myself, see if we can collaborate :) ]", 'div', ['code']) : null;
-    zoomControl.isIdeOpen == true ? await typeText(div, "Thank you, and have a wonderful day!", 'div', ['code'], 100, false) : null;
-
     if (zoomControl.isIdeOpen) {
         log('finish ide text')
+        let b = document.createElement('button')
+        b.classList.add('send-note-button');
+        b.classList.add('after-text-contact-button');
+        b.innerHTML = 'Contact'
+        b.addEventListener('click', (event) => {
+            log('after-text-contact-button click')
+            document.getElementById('ide-contact-tab').click();
+        })
+        div.appendChild(b)
+
     }
+    zoomControl.isIdeOpen == true ? await typeText(div, "Thank you, and have a wonderful day!", 'div', ['code'], 100, false) : null;
+
 
 }
 const closeIde = () => {
@@ -168,7 +184,9 @@ const isAllowedZoom = (zoomUnit) => {
         if (zoomControl.openScreenViewBox[0] < zoomControl.viewBox[0]) {
             if (zoomControl.currentMode != zoomControl.modeOpts.office) {
                 zoomControl.currentMode = zoomControl.modeOpts.office;
+                log('zoom to office')
                 zoomToTarget(zoomControl.windowRectViewBox);
+
             }
             return;
         }
@@ -289,7 +307,7 @@ const initZoomControl = () => {
         );
 
 
-});
+    });
 
 }
 
@@ -345,15 +363,16 @@ const typeHeroText = async () => {
     }
 }
 
-const main = async() => {
+const main = async () => {
 
-    await log('main loaded', ' Height: ' +window.innerHeight.toString() + ' Width: ' + window.innerWidth.toString());
+    await log('main loaded', ' Height: ' + window.innerHeight.toString() + ' Width: ' + window.innerWidth.toString());
     typeHeroText();
     // TODO: hide login animathion
     initZoomControl();
     // startSmokeWords();
     initRouter();
     zoomControl.document.addEventListener('wheel', async (event) => {
+        console.log(event.deltaY)
         animateZoom(event);
     })
 

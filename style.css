@@ -393,6 +393,12 @@ background-image:  repeating-linear-gradient(to right, #ffffff, #ffffff 1px, #ff
         opacity: 10%;
     }
 }
+.after-text-contact-button{
+    position: static; 
+    padding: 20px 60px; 
+    background-color:#f57e7e;
+    font-size: 30px;
+}
 
 
 
