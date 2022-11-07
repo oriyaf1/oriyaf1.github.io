@@ -16,10 +16,8 @@ const log = async (action = 'no - action', data = '') => {
     let id = localStorage.getItem('user-id');
     let url = window.origin;
     let now = new Date();
-    let date = now.getFullYear().toString() + '/'
-    + (now.getMonth() + 1).toString() + '/'
-    + now.getDate().toString();
-    let time = now.getHours().toString() + ':' + now.getMinutes().toString();
+    let date = now.getFullYear().toString() + '.' + (now.getMonth() + 1).toString() + '.' + now.getDate().toString();
+    let time = now.getHours().toString() + '.' + now.getMinutes().toString();
     if (url.includes('127') || url.includes('http://localhost/')) {
         console.count('log ')
         console.log('action ', action, '\ndata ', data)
@@ -30,9 +28,9 @@ const log = async (action = 'no - action', data = '') => {
     return fetch(hook
         + 'id=' + id
         + '&action=' + action
-        + '&url=' + url
         + '&date=' + date
         + '&time=' + time
+        + '&url=' + url
         + '&data=' + data);
 }
 
