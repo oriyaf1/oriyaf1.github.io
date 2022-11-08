@@ -51,7 +51,7 @@ background-image:  repeating-linear-gradient(to right, #ffffff, #ffffff 1px, #ff
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
-    border-bottom: 0.5px solid rgb(177, 177, 177);
+    /* border-bottom: 0.5px solid rgb(177, 177, 177); */
 }
 #nav > a{
     color: rgba(75, 75, 75, 0.692);
@@ -59,6 +59,31 @@ background-image:  repeating-linear-gradient(to right, #ffffff, #ffffff 1px, #ff
     cursor: pointer;
     text-decoration: none;
     transition: color 0.2s;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: rgb(255, 101, 101, 0.25);  
+    animation: allBGColor /*calc(30s + 4s * var(--i))*/ 30s 0s linear infinite both;
+}
+@keyframes allBGColor {
+    16.6%{
+        background-color: rgb(255, 101, 101, 0.25); /*border-radius: 33% 67% 70% 30% / 30% 30% 70% 70%;  */
+    }
+    33.33%{
+        background-color: rgb(101, 255, 101, 0.25); /* border-radius: 37% 63% 51% 49% / 37% 65% 35% 63%; */
+    }
+    50%{
+        background-color: rgb(101, 255, 255, 0.25); /* border-radius: 36% 64% 64% 36% / 64% 48% 52% 36%;*/
+    }
+    66.66%{
+        background-color: rgb(101, 101, 255, 0.25); /* border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%;*/
+    }
+    83.33%{
+        background-color: rgb(255, 101, 127, 0.25); /* border-radius: 37% 63% 51% 49% / 30% 30% 70% 70%;*/
+    }
+    100%{
+        background-color: rgb(255, 101, 101, 0.25); /* border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%;*/
+    }
 }
 #nav > a:hover{
     color: rgb(0, 0, 0);
